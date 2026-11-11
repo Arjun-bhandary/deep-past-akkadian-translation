@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data, models and run artefacts (large / competition-licensed - never commit)
+data/
+outputs/
+checkpoints/
+candidates/
+wandb/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pdf
+submission.csv
+*.log
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

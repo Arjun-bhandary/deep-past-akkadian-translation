@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deep-past"
+version = "1.0.0"
+description = "Deep Past Challenge (Kaggle): Old Assyrian/Akkadian -> English MT with a weighted MBR ensemble of Helsinki-NLP opus-mt and byT5 models"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Arjun Bhandary" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+train = ["torch", "transformers>=4.40", "sentencepiece", "sacremoses"]
+pdf = ["pymupdf", "opencv-python-headless", "pillow"]
+ocr = ["paddleocr[doc-parser]>=3.3"]
+qwen = ["unsloth", "trl", "peft", "datasets"]
+dev = ["pytest", "sacrebleu", "nbformat"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+markers = [
+    "slow: end-to-end smoke tests that build tiny models (deselect with -m 'not slow')",
+    "network: tests that download tokenizers from the Hugging Face Hub",
+]
